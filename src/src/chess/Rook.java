@@ -18,6 +18,7 @@ public class Rook extends Piece {
     
     @Override
     public boolean isValidMove(int newMoveX, int newMoveY, Piece[][] board) {
+        boolean flagCheckExits = false;
         if(newMoveX == x && newMoveY == y){
             return false;
         }
@@ -25,6 +26,7 @@ public class Rook extends Piece {
             return false;
         }
         if(newMoveX != x){
+            System.out.println("Flag1");
             int posMinX = Math.min(newMoveX, x);
             int posMaxX = Math.max(newMoveX, x);
             if(x == posMinX){
@@ -32,11 +34,28 @@ public class Rook extends Piece {
             }else if(x == posMaxX){
                 posMaxX = posMaxX - 1;
             }
+            System.out.println("Flag2");
             for (int i = posMinX; i <= posMaxX; i++) {
+                System.out.println("Flag4");
+                if(i == posMinX){
+                    if(x == posMaxX + 1 && board[posMinX][y] != null && flagCheckExits == false){
+                        if(!board[posMinX][y].getColor().equalsIgnoreCase(board[x][y].getColor())){
+                            return true;
+                        }
+                    }
+                }else if (i == posMaxX){
+                    if(x == posMinX - 1 && board[posMaxX][y] != null && flagCheckExits == false){
+                        if(!board[posMaxX][y].getColor().equalsIgnoreCase(board[x][y].getColor())){
+                            return true;
+                        }
+                    }
+                    }
                 if(board[i][y] != null){
-                    return false;
+                    flagCheckExits = true;
                 }
-            }   
+            }
+            System.out.println("Flag7");
+            if(flagCheckExits == true) return false;
         }
         if(newMoveY != y){
             int posMinY = Math.min(newMoveY, y);
@@ -48,10 +67,26 @@ public class Rook extends Piece {
                 posMaxY = posMaxY - 1;
             }
             for (int i = posMinY; i <= posMaxY; i++) {
+                System.out.println("Flag4");
+                if(i == posMinY){
+                    if(y == posMaxY + 1 && board[x][posMinY] != null && flagCheckExits == false){
+                        if(!board[x][posMinY].getColor().equalsIgnoreCase(board[x][y].getColor())){
+                            return true;
+                        }
+                    }
+                }else if (i == posMaxY){
+                    if(y == posMinY - 1 && board[x][posMaxY] != null && flagCheckExits == false){
+                        if(!board[x][posMaxY].getColor().equalsIgnoreCase(board[x][y].getColor())){
+                            return true;
+                        }
+                    }
+                }
                 if(board[x][i] != null){
-                    return false;
+                    flagCheckExits = true;
                 }
             }
+            System.out.println("Flag99");
+            if(flagCheckExits == true) return false;
         }
         return true;
         
@@ -59,7 +94,7 @@ public class Rook extends Piece {
 
     @Override
     public void move(int newMoveX, int newMoveY, Piece[][] board) {
-        super.move(newMoveX, newMoveY, board); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.move(newMoveX, newMoveY, board);
     }
         @Override
     public String toString() {

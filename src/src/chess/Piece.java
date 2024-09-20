@@ -21,6 +21,9 @@ public abstract class Piece {
         this.y = y;
     }
 
+    public String getColor() {
+        return color;
+    }
     
     public abstract boolean isValidMove(int newMoveX, int newMoveY, Piece[][] board);
     

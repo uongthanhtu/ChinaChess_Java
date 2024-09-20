@@ -86,6 +86,8 @@ public class ChessBoard  {
         if (piece != null && piece.isValidMove(endX, endY, board)) {
             board[endX][endY] = piece;
             board[startX][startY] = null;
+            System.out.println(board[endX][endY]);
+            System.out.println(board[startX][startY]);
             piece.move(endX, endY, board);
              
         } else {
