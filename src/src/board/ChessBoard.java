@@ -15,7 +15,7 @@ import src.chess.Rook;
 
 /**
  *
- * @author ADMIN
+ * @author Tusry
  */
 public class ChessBoard  {
     private static Piece[][] board = new Piece[10][9];

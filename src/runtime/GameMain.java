@@ -11,7 +11,7 @@ import src.player.Player;
 
 /**
  *
- * @author ADMIN
+ * @author Tusry
  */
 public class GameMain {
 

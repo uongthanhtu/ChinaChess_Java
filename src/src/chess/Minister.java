@@ -6,7 +6,7 @@ package src.chess;
 
 /**
  *
- * @author ADMIN
+ * @author Tusry
  */
 public class Minister extends Piece{
 

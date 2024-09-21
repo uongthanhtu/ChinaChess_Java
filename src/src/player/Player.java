@@ -8,7 +8,7 @@ import src.board.ChessBoard;
 
 /**
  *
- * @author ADMIN
+ * @author Tusry
  */
 public class Player {
     private String name;

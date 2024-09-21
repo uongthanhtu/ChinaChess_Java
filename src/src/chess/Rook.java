@@ -8,7 +8,7 @@ import src.board.ChessBoard;
 
 /**
  *
- * @author ADMIN
+ * @author Tusry
  */
 public class Rook extends Piece {
     
@@ -34,29 +34,28 @@ public class Rook extends Piece {
             }else if(x == posMaxX){
                 posMaxX = posMaxX - 1;
             }
-            System.out.println("Flag2");
             for (int i = posMinX; i <= posMaxX; i++) {
-                System.out.println("Flag4");
                 if(i == posMinX){
-                    if(x == posMaxX + 1 && board[posMinX][y] != null && flagCheckExits == false){
+                    if(flagCheckExits == false && x == posMaxX + 1 && board[posMinX][y] != null){
                         if(!board[posMinX][y].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
                         }
                     }
-                }else if (i == posMaxX){
-                    if(x == posMinX - 1 && board[posMaxX][y] != null && flagCheckExits == false){
+                }
+                if (i == posMaxX || posMaxX == posMinX){
+                    if(flagCheckExits == false && x == posMinX - 1 && board[posMaxX][y] != null){
                         if(!board[posMaxX][y].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
                         }
                     }
-                    }
+                }
                 if(board[i][y] != null){
                     flagCheckExits = true;
                 }
             }
-            System.out.println("Flag7");
             if(flagCheckExits == true) return false;
         }
+        
         if(newMoveY != y){
             int posMinY = Math.min(newMoveY, y);
             int posMaxY = Math.max(newMoveY, y);
@@ -67,15 +66,15 @@ public class Rook extends Piece {
                 posMaxY = posMaxY - 1;
             }
             for (int i = posMinY; i <= posMaxY; i++) {
-                System.out.println("Flag4");
                 if(i == posMinY){
-                    if(y == posMaxY + 1 && board[x][posMinY] != null && flagCheckExits == false){
+                    if(flagCheckExits == false && y == posMaxY + 1 && board[x][posMinY] != null){
                         if(!board[x][posMinY].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
                         }
                     }
-                }else if (i == posMaxY){
-                    if(y == posMinY - 1 && board[x][posMaxY] != null && flagCheckExits == false){
+                }
+                if (i == posMaxY || posMaxY == posMinY){
+                    if(flagCheckExits == false && y == posMinY - 1 && board[x][posMaxY] != null){
                         if(!board[x][posMaxY].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
                         }
