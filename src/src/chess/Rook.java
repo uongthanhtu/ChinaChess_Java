@@ -26,7 +26,6 @@ public class Rook extends Piece {
             return false;
         }
         if(newMoveX != x){
-            System.out.println("Flag1");
             int posMinX = Math.min(newMoveX, x);
             int posMaxX = Math.max(newMoveX, x);
             if(x == posMinX){
@@ -42,7 +41,7 @@ public class Rook extends Piece {
                         }
                     }
                 }
-                if (i == posMaxX || posMaxX == posMinX){
+                if (i == posMaxX){
                     if(flagCheckExits == false && x == posMinX - 1 && board[posMaxX][y] != null){
                         if(!board[posMaxX][y].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
@@ -53,13 +52,12 @@ public class Rook extends Piece {
                     flagCheckExits = true;
                 }
             }
-            if(flagCheckExits == true) return false;
+            if(flagCheckExits) return false;
         }
         
         if(newMoveY != y){
             int posMinY = Math.min(newMoveY, y);
             int posMaxY = Math.max(newMoveY, y);
-            System.out.println(posMinY + " " + posMaxY);
             if(y == posMinY){
                 posMinY = posMinY + 1;
             }else if(y == posMaxY){
@@ -73,7 +71,7 @@ public class Rook extends Piece {
                         }
                     }
                 }
-                if (i == posMaxY || posMaxY == posMinY){
+                if (i == posMaxY){
                     if(flagCheckExits == false && y == posMinY - 1 && board[x][posMaxY] != null){
                         if(!board[x][posMaxY].getColor().equalsIgnoreCase(board[x][y].getColor())){
                             return true;
@@ -84,8 +82,7 @@ public class Rook extends Piece {
                     flagCheckExits = true;
                 }
             }
-            System.out.println("Flag99");
-            if(flagCheckExits == true) return false;
+            if(flagCheckExits) return false;
         }
         return true;
         
