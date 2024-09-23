@@ -16,8 +16,9 @@ public class Knight extends Piece{
 
     @Override
     public boolean isValidMove(int newMoveX, int newMoveY, Piece[][] board) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
+
     
         @Override
     public String toString() {

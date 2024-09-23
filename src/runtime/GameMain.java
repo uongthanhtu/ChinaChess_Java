@@ -34,18 +34,21 @@ public class GameMain {
             int newCol = scanner.nextInt();
             Piece piece;
             try{
+                System.out.println(row +" " + col);
                 piece = board.getPiece(row, col);
-                if (piece.isValidMove(newRow, newCol, board.getBoard())) {
+                System.out.println(piece);
+                System.out.println(board.getPiece(newRow, newCol));
+                if (piece.isValidMove(newRow, newCol, ChessBoard.getBoard())) {
+                    System.out.println(board.getPiece(newRow, newCol));
                 board.movePiece(row, col, newRow, newCol);
                 } else {
                     System.out.println("Invalid move. Try again.");
                 }
             }catch(Exception e){
+                System.out.println(e);
                 System.out.println("Error move!!!!!!");
             }
-            
         }
-        
+
     }
-    
 }
