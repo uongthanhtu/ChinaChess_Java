@@ -16,7 +16,21 @@ public class Minister extends Piece{
     
     @Override
     public boolean isValidMove(int newMoveX, int newMoveY, Piece[][] board) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(newMoveX == x || newMoveY == y){
+            return false;
+        }
+        Piece piece = board[x][y];
+
+        if((newMoveX <= 2 || newMoveX >= 7) && (newMoveY >= 3 && newMoveY <= 5)){
+            if((newMoveX == x + 1 || newMoveX == x - 1) && (newMoveY == y + 1 || newMoveY == y - 1)){
+                if(board[newMoveX][newMoveY] != null && board[newMoveX][newMoveY].getColor().equalsIgnoreCase(piece.getColor())) {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
     
         @Override
