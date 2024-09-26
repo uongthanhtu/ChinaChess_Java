@@ -16,7 +16,47 @@ public class Knight extends Piece{
 
     @Override
     public boolean isValidMove(int newMoveX, int newMoveY, Piece[][] board) {
-        return true;
+        if(newMoveX == x || newMoveY == y){
+            return false;
+        }
+        Piece piece = board[newMoveX][newMoveY];
+        if(((newMoveX == x + 2 || newMoveX == x - 2) && (newMoveY == y + 1 || newMoveY == y - 1 ))){
+            if(newMoveX == x + 2){
+                if (board[x + 1][y] == null) {
+                    if(piece != null && piece.getColor().equalsIgnoreCase(board[x][y].getColor())){
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
+            }
+            if (board[x - 1][y] == null) {
+                if(piece != null && piece.getColor().equalsIgnoreCase(board[x][y].getColor())){
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+        if((newMoveX == x + 1 || newMoveX == x - 1) && (newMoveY == y + 2 || newMoveY == y - 2 )){
+            if(newMoveY == y + 2){
+                if (board[x][y + 1] == null) {
+                    if(piece != null && piece.getColor().equalsIgnoreCase(board[x][y].getColor())){
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
+            }
+            if (board[x][y - 1] == null) {
+                if(piece != null && piece.getColor().equalsIgnoreCase(board[x][y].getColor())){
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     
